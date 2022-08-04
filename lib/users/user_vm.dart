@@ -4,7 +4,7 @@ import 'package:stacked/stacked.dart';
 class UserviewModel extends BaseViewModel {
   String? name;
   final formKey = GlobalKey<FormState>();
-  List<String> userData = ['ALi', 'Sharjeel', 'Usman'];
+  List<String> userData = ['Sharjeel', 'Ammar', 'Lana Rose'];
   onAdd(String value) {
     userData.add(value);
     notifyListeners();

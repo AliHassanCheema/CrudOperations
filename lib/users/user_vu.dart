@@ -14,7 +14,7 @@ class UserScreen extends ViewModelBuilderWidget<UserviewModel> {
         appBar: AppBar(
           backgroundColor: Colors.cyan[900],
           centerTitle: true,
-          title: const Text('Users'),
+          title: const Text('ADMIN'),
         ),
         body: ListView.builder(
             itemCount: viewModel.userData.length,
@@ -36,7 +36,7 @@ class UserScreen extends ViewModelBuilderWidget<UserviewModel> {
                     viewModel.onDelete(index);
                   },
                 ),
-                leading: const Icon(Icons.account_box),
+                leading: const Icon(Icons.account_balance_rounded),
                 title: Text(viewModel.userData[index]),
                 subtitle: const Text('Flutter Developer'),
               );
