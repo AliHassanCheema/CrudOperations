@@ -10,30 +10,21 @@ class AddUserScreen extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        
-        
         backgroundColor: Colors.cyan[900],
-       centerTitle: true,
+        centerTitle: true,
         title: const Text('ADD USER'),
       ),
-      
       body: Form(
-        
-     
-          
+          key: viewModel.formKey,
           child: Padding(
             padding: const EdgeInsets.all(28.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-               
                 TextFormField(
-                  
                   initialValue: name ?? '',
-                  
                   onSaved: (newValue) {
                     viewModel.name = newValue;
-                    
                   },
                   validator: (value) {
                     if (value == null || value.isEmpty || value == '') {
@@ -41,14 +32,10 @@ class AddUserScreen extends StatelessWidget {
                     }
                     return null;
                   },
-                  
-                  decoration: InputDecoration(  
-                    
-              border: InputBorder.none,  
-              labelText: 'Enter Name',  
-              hintText: 'Enter Your Name', 
-                  
-                  
+                  decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      labelText: 'Enter Name',
+                      hintText: 'Enter Your Name',
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey)),
                       errorBorder: OutlineInputBorder(
@@ -57,19 +44,24 @@ class AddUserScreen extends StatelessWidget {
                           borderSide: BorderSide(color: Colors.grey)),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey))),
-                          
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                TextField(
-
-                    decoration: InputDecoration(  
-              border: InputBorder.none,  
-              labelText: 'Designation',  
-              hintText: 'Enter you Designation', 
-                  
-                  
+                TextFormField(
+                  onSaved: (newValue) {
+                    viewModel.designation = newValue;
+                  },
+                  validator: (value) {
+                    if (value == null || value.isEmpty || value == '') {
+                      return 'Please enter some text';
+                    }
+                    return null;
+                  },
+                  decoration: const InputDecoration(
+                      border: InputBorder.none,
+                      labelText: 'Designation',
+                      hintText: 'Enter you Designation',
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey)),
                       errorBorder: OutlineInputBorder(
@@ -78,27 +70,21 @@ class AddUserScreen extends StatelessWidget {
                           borderSide: BorderSide(color: Colors.grey)),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey))),
-                          
-
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 ElevatedButton(
-                
                     onPressed: () {
-                     
                       viewModel.onSave();
                       if (viewModel.name != '' || viewModel.name!.isNotEmpty) {
-                        Navigator.pop(context, viewModel.name);
+                        Navigator.pop(context, viewModel.designation);
                       }
                     },
                     style: ElevatedButton.styleFrom(
-    primary: Colors.cyan[900], // Background color
-  ),
-                    child: const Text('Save'
-                    ,
-    style: TextStyle(fontSize: 15)))
+                      primary: Colors.cyan[900], // Background color
+                    ),
+                    child: const Text('Save', style: TextStyle(fontSize: 15)))
               ],
             ),
           )),

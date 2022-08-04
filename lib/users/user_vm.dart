@@ -3,8 +3,10 @@ import 'package:stacked/stacked.dart';
 
 class UserviewModel extends BaseViewModel {
   String? name;
+  String? designation;
   final formKey = GlobalKey<FormState>();
-  List<String> userData = ['Sharjeel', 'Ammar', 'Lana Rose'];
+  // List<String> userData = ['Sharjeel', 'Ammar', 'Lana Rose'];
+  List<String> userData = ['Software', 'Data analyst', 'Programmer'];
   onAdd(String value) {
     userData.add(value);
     notifyListeners();
@@ -22,6 +24,7 @@ class UserviewModel extends BaseViewModel {
 
   onSave() {
     formKey.currentState!.save();
+    debugPrint('$name    $designation');
     if (formKey.currentState!.validate()) {
       return 'Please enter some text';
     }
