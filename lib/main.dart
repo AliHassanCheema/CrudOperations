@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'users/login_vu.dart';
+import 'auth/login_vu.dart';
 
 void main() {
   runApp(const MyApp());
