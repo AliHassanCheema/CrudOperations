@@ -1,34 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-class UserviewModel extends BaseViewModel {
-  String? name;
-   String? designation;
-  final formKey = GlobalKey<FormState>();
-  List<String> userData = ['Sharjeel', 'Ammar', 'Faizan'];
+import 'model.dart';
 
-  List<String> userDesignation = ['Software', 'Data analyst', 'Programmer'];
-  onAdd(String value)
-  {
-    userData.add(value);
+class UserviewModel extends BaseViewModel {
+  String? userName;
+  String? userDesignation;
+  final formKey = GlobalKey<FormState>();
+  List<Users> userData = [
+    Users('Sharjeel', 'SOftware Engineer', Icons.person),
+    Users('Ammar', 'IT Professional', Icons.heart_broken_rounded),
+    Users('Faizan', 'Data Scientist', Icons.save),
+  ];
+  Users? users;
+  // List<String> userData = ['Sharjeel', 'Ammar', 'Faizan'];
+
+  // List<String> userDesignation = ['Software', 'Data analyst', 'Programmer'];
+  onAdd(Users user) {
+    userData.add(user);
     notifyListeners();
   }
 
-  onDelete(int index) 
-  {
+  onDelete(int index) {
     userData.removeAt(index);
     notifyListeners();
   }
 
-  onUpdate(int index, String value) 
-  {
-    userData[index] = value;
+  onUpdate(int index, Users user) {
+    userData[index] = user;
     notifyListeners();
   }
 
   onSave() {
     formKey.currentState!.save();
-    debugPrint('$name    $designation');
+    debugPrint('$userName    $userDesignation');
+    users = Users(userName!, userDesignation!, Icons.add_alarm);
     if (formKey.currentState!.validate()) {
       return 'Please enter some text';
     }

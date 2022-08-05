@@ -80,8 +80,7 @@ class LoginScreen extends StatelessWidget {
                             onPressed: () {
                               formkey.currentState!.save();
                               formkey.currentState!.validate();
-                              if (email == 'sharjeel@gmail.com' &&
-                                  password == '1234') {
+                              if (email == 'aa' && password == '1234') {
                                 Navigator.pushReplacement(context,
                                     MaterialPageRoute(builder: (c) {
                                   return const UserScreen();

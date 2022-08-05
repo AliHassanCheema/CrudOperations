@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:testing/users/user_vm.dart';
 
+import 'model.dart';
+
 class AddUserScreen extends StatelessWidget {
-  const AddUserScreen(this.viewModel, this.name, {Key? key}) : super(key: key);
+  const AddUserScreen(this.viewModel, this.users, {Key? key}) : super(key: key);
   final UserviewModel viewModel;
-  final String? name;
+  final Users? users;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -22,9 +24,9 @@ class AddUserScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextFormField(
-                  initialValue: name ?? '',
+                  initialValue: users != null ? users!.name : '',
                   onSaved: (newValue) {
-                    viewModel.name = newValue;
+                    viewModel.userName = newValue;
                   },
                   validator: (value) {
                     if (value == null || value.isEmpty || value == '') {
@@ -32,7 +34,6 @@ class AddUserScreen extends StatelessWidget {
                     }
                     return null;
                   },
-                  
                   decoration: const InputDecoration(
                       border: InputBorder.none,
                       labelText: 'Enter Name',
@@ -49,11 +50,10 @@ class AddUserScreen extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                
                 TextFormField(
-                  initialValue: name ?? '',
+                  initialValue: users != null ? users!.designation : '',
                   onSaved: (newValue) {
-                    viewModel.designation = newValue;
+                    viewModel.userDesignation = newValue;
                   },
                   validator: (value) {
                     if (value == null || value.isEmpty || value == '') {
@@ -80,8 +80,8 @@ class AddUserScreen extends StatelessWidget {
                 ElevatedButton(
                     onPressed: () {
                       viewModel.onSave();
-                      if (viewModel.designation != '' || viewModel.designation!.isNotEmpty) {
-                        Navigator.pop(context, viewModel.designation);
+                      if (viewModel.users != null) {
+                        Navigator.pop(context, viewModel.users);
                       }
                     },
                     style: ElevatedButton.styleFrom(

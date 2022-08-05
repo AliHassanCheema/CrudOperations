@@ -36,9 +36,9 @@ class UserScreen extends ViewModelBuilderWidget<UserviewModel> {
                     viewModel.onDelete(index);
                   },
                 ),
-                leading: const Icon(Icons.account_balance_rounded),
-                 title: const Text('Sharjeel'),
-                subtitle: Text(viewModel.userDesignation[index]),
+                leading: Icon(viewModel.userData[index].icon),
+                title: Text(viewModel.userData[index].name),
+                subtitle: Text(viewModel.userData[index].designation),
               );
             }),
         floatingActionButton: FloatingActionButton(
