@@ -37,8 +37,8 @@ class UserScreen extends ViewModelBuilderWidget<UserviewModel> {
                   },
                 ),
                 leading: const Icon(Icons.account_balance_rounded),
-                 title: const Text('Name'),
-                subtitle: Text(viewModel.userData[index]),
+                 title: const Text('Sharjeel'),
+                subtitle: Text(viewModel.userDesignation[index]),
               );
             }),
         floatingActionButton: FloatingActionButton(

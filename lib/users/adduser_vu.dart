@@ -32,6 +32,7 @@ class AddUserScreen extends StatelessWidget {
                     }
                     return null;
                   },
+                  
                   decoration: const InputDecoration(
                       border: InputBorder.none,
                       labelText: 'Enter Name',
@@ -48,7 +49,9 @@ class AddUserScreen extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
+                
                 TextFormField(
+                  initialValue: name ?? '',
                   onSaved: (newValue) {
                     viewModel.designation = newValue;
                   },
@@ -77,7 +80,7 @@ class AddUserScreen extends StatelessWidget {
                 ElevatedButton(
                     onPressed: () {
                       viewModel.onSave();
-                      if (viewModel.name != '' || viewModel.name!.isNotEmpty) {
+                      if (viewModel.designation != '' || viewModel.designation!.isNotEmpty) {
                         Navigator.pop(context, viewModel.designation);
                       }
                     },
